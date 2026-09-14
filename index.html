@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Dijkstra's Algorithm — 3D Visualizer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+
+  <aside id="sidebar">
+    <h1>Dijkstra's Algorithm
+      <span>Interactive 3D visualization with narration</span>
+    </h1>
+
+    <div class="field">
+      <label for="source-select">Source node</label>
+      <select id="source-select"></select>
+    </div>
+
+    <div class="btn-row">
+      <button id="play-pause" class="primary">Play</button>
+      <button id="step-fwd">Step</button>
+      <button id="reset">Reset</button>
+    </div>
+
+    <div class="field">
+      <label for="speed">Narration / playback speed</label>
+      <input type="range" id="speed" min="0.6" max="1.8" step="0.1" value="1.0" />
+    </div>
+
+    <div class="toggle-row">
+      <span>Mute narration</span>
+      <input type="checkbox" id="mute-narration" />
+    </div>
+
+    <div class="toggle-row">
+      <span>Auto camera (rotate / focus)</span>
+      <input type="checkbox" id="auto-camera" checked />
+    </div>
+
+    <div class="field">
+      <label>Live distances</label>
+      <table id="dist-table"></table>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><span class="swatch" style="background:#e63946"></span> source</div>
+      <div class="legend-item"><span class="swatch" style="background:#ffb703"></span> current / frontier</div>
+      <div class="legend-item"><span class="swatch" style="background:#2a9d8f"></span> finalized</div>
+      <div class="legend-item"><span class="swatch" style="background:#ffd166"></span> edge being checked</div>
+      <div class="legend-item"><span class="swatch" style="background:#06d6a0"></span> edge relaxed (improved)</div>
+      <div class="legend-item"><span class="swatch" style="background:#4cc9f0"></span> final shortest path</div>
+    </div>
+
+    <p style="font-size:11px;color:#77869c;line-height:1.5;">
+      Click any node at any time to fly the camera to it. Once a run finishes,
+      clicking a node also highlights the shortest path from the source.
+    </p>
+  </aside>
+
+  <main id="viewport">
+    <div id="compare-panel"></div>
+    <div id="caption-bar">Pick a source node and press Play to start the simulation.</div>
+  </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="graph-data.js"></script>
+<script src="dijkstra.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
